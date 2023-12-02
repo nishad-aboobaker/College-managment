@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './StaffLogin.css'
 import wave from '../../../images/wave.png'
@@ -6,8 +6,8 @@ import bg from '../../../images/bg.svg'
 import avatar from '../../../images/avatar.svg'
 
 const StaffLogin = () => {
-
-  const inputs = document.querySelectorAll(".input");
+  const js=()=>{
+    const inputs = document.querySelectorAll(".input");
 
 
   function addcl(){
@@ -27,6 +27,13 @@ const StaffLogin = () => {
     input.addEventListener("focus", addcl);
     input.addEventListener("blur", remcl);
   });
+  }
+  
+  useEffect(()=>{
+    js()
+  },[])
+
+
 
   return (
     <div className='admin-login'>
@@ -57,7 +64,6 @@ const StaffLogin = () => {
                  <input className='input'minLength="7" type="password" name='password' required />
              </div>
           </div>
-          <Link to={"/staffreg"}>Dont have an account ?</Link>
           <input type="submit" className="btn" value="Login" />
         </form>
     </div>

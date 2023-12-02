@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './AdminLogin.css'
 import { Link } from 'react-router-dom'
 import wave from '../../../images/wave.png'
@@ -7,7 +7,8 @@ import avatar from '../../../images/avatar.svg'
 
 const AdminLogin = () => {
 
-  const inputs = document.querySelectorAll(".input");
+  const js=()=>{
+    const inputs = document.querySelectorAll(".input");
 
 
   function addcl(){
@@ -27,6 +28,11 @@ const AdminLogin = () => {
     input.addEventListener("focus", addcl);
     input.addEventListener("blur", remcl);
   });
+  }
+  
+  useEffect(()=>{
+    js()
+  },[])
 
 
 
