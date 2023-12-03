@@ -11,15 +11,16 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Adminreg = () => {
   const navigate = useNavigate();
-  const notify = () =>toast.success('Registration Completed Succesfully', {
-    position: "bottom-center",
-    autoClose: 1000,
-    hideProgressBar: true,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
+  const success = () =>
+    toast.success("Registration Succesfull", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
     });
 
   const js = () => {
@@ -55,7 +56,6 @@ const Adminreg = () => {
 
   const handleChange = (e) => {
     setVal((pre) => ({ ...pre, [e.target.name]: e.target.value }));
-    console.log(Val);
   };
 
   const handleSubmit = async (e) => {
@@ -65,13 +65,15 @@ const Adminreg = () => {
     });
 
     if (res.status == 201) {
-      notify();
-      navigate("/")
-      
+      success();
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     } else {
       alert("data not added");
     }
   };
+  
 
   return (
     <div className="admin-login">
@@ -132,16 +134,16 @@ const Adminreg = () => {
             </div>
             <input type="submit" className="btn" value="Register " />
             <ToastContainer
-              position="bottom-center"
-              autoClose={1}
-              hideProgressBar
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={true}
               newestOnTop={false}
               closeOnClick
               rtl={false}
               pauseOnFocusLoss
               draggable
               pauseOnHover
-              theme="light"
+              theme="dark"
             />
           </form>
         </div>
