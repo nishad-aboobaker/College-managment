@@ -1,6 +1,6 @@
 import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Home from './Components/Body/Home/Home'
+import index from './Components/Body/index/index'
 import AdminLogin from './Components/Body/AdminLogin/AdminLogin'
 import StaffLogin from './Components/Body/StaffLogin/StaffLogin'
 import StaffReg from './Components/Body/StaffReg/StaffReg'
@@ -14,9 +14,10 @@ function App() {
   return (
     <>
     
-    <BrowserRouter>    
+    <BrowserRouter>   
     <Routes>
-      <Route path='/' Component={Home}/>
+      
+      <Route path='/admin' Component={index}/>
       <Route path='/adminlogin' Component={AdminLogin}/>
       <Route path='/stafflogin' Component={StaffLogin}/>
       <Route path='/staffreg' Component={StaffReg}/>
@@ -26,7 +27,6 @@ function App() {
       <Route path='/studentreg' Component={Studentreg}/>
       <Route path='/studentlogin' Component={Studentlogin}/>
     </Routes>
-    
     </BrowserRouter>
     </>
   )

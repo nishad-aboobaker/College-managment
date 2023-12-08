@@ -1,70 +1,76 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import './StaffReg.css'
-import wave from '../../../images/wave.png'
-import bg from '../../../images/bg.svg'
-import avatar from '../../../images/avatar.svg'
+import wave from "../../../images/wave.png";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
 
 const StaffReg = () => {
-
-
-  const inputs = document.querySelectorAll(".input");
-
-
-  function addcl(){
-    let parent = this.parentNode.parentNode;
-    parent.classList.add("focus");
-  }
+  const navigate=useNavigate()
   
-  function remcl(){
-    let parent = this.parentNode.parentNode;
-    if(this.value == ""){
-      parent.classList.remove("focus");
-    }
-  }
-  
-  
-  inputs.forEach(input => {
-    input.addEventListener("focus", addcl);
-    input.addEventListener("blur", remcl);
+  const [Val, setVal] = useState({
+    name: "",
+    username: "",
+    email: "",
+    salary: "",
+    experience: "",
+    empid: "",
+    password: "",
+    phone: "",
+    designation: "",
+    address: ""
   });
 
+  const handleChange = (e) => {
+    setVal((pre) => ({ ...pre, [e.target.name]: e.target.value }));
+  };
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault(e);
+    const res = await axios.post("http://localhost:3041/college/addstaff", {
+      ...Val,
+    });
+    if (res.status == 201) {
+      alert("Registration Successfull")
+      navigate('/adminhome')
+    } else {
+      alert("data not added");
+    }
+  };
+  
 
   return (
-    <div className='admin-login'>
-    <img className="wave" src={wave} />
-<div className="container">
-<div className="img">
-  <img src={bg} />
-</div>
-<div className="login-content">
-  <form>
-    <img src={avatar} />
-    <h2 className="title">Staff Registration</h2>
-           <div className="input-div one">
-              <div className="i">
-                  <i className="fas fa-user"></i>
-              </div>
-              <div className="div">
-                  <h5>Username</h5>
-                  <input className='input' type="text" name='username' required />
-              </div>
-           </div>
-           <div className="input-div pass">
-              <div className="i"> 
-                 <i className="fas fa-lock"></i>
-              </div>
-              <div className="div">
-                 <h5>Password</h5>
-                 <input className='input'minLength="7" type="password" name='password' required />
-             </div>
-          </div>
-          <input type="submit" className="btn" value="Login" />
-        </form>
+    <div className='admin-staff-reg-color'>
+    <div className="admin-staff-reg-head">
+      <h2 className='reg-head'>Register New Staff</h2>
+      <img className='waveee' src={wave} alt="" />
     </div>
-</div>
-</div>
+    <div className="admin-staff-reg-inputfields">
+      <div className="admin-staff-reg-input-row">
+              <input type="text" onChange={handleChange} name='name' placeholder='Name'/>
+              <input type="text" onChange={handleChange} name='username' placeholder='Username'/>
+                <input type="text" onChange={handleChange} name='email' placeholder='Email'/>
+              <input type="text" onChange={handleChange} name='salary' placeholder='Salary'/>
+                <input type="text" onChange={handleChange} name='experience' placeholder='Experience'/>
+      </div>
+      <div className="admin-staff-reg-input-row">
+              <input type="text" onChange={handleChange} name='empid' placeholder='Empid'/>
+                <input type="text" onChange={handleChange} name='password' placeholder='Password'/>
+              <input type="text" onChange={handleChange} name='phone' placeholder='Phone'/>
+                <input type="text" onChange={handleChange} name='designation' placeholder='Designation'/>
+                <input type="text" onChange={handleChange} name='address' placeholder='Address'/>
+      </div>
+    </div>
+    <div className="staff-file">
+      <input type="file" name='photo' placeholder='Photo' />
+    </div>
+    <div className="admin-staff-reg-btn">
+      <button onClick={handleSubmit}>Register</button>
+    </div>
+  </div>
   )
 }
 
 export default StaffReg
+
+

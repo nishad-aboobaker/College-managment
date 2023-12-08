@@ -1,5 +1,5 @@
 import React from 'react'
-import './Home.css'
+import './index.css'
 import wave from '../../../images/wave.png'
 import bg from '../../../images/bg.svg'
 import avatar from '../../../images/avatar.svg'
@@ -39,20 +39,6 @@ const Home = () => {
     </div>
 </div>
 </div>
-
-
-
-
-  //  <>
-  //   <div className="heading"><h1>
-  //     Welcome
-  //   </h1></div>
-  //   <div className="btn-container">
-  //   <div className='admin-btn'><Link to={'/adminlogin'}>Admin</Link></div>
-  //   <div className='staff-btn'><Link to={'/stafflogin'}>Staff</Link></div>
-  //   </div>
-
-  //  </>
   )
 }
 

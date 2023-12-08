@@ -11,11 +11,18 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Adminreg = () => {
   const navigate = useNavigate();
+  const [Val, setVal] = useState({
+    name: "",
+    username: "",
+    password: "",
+  });
+
+  /////toast messege/////
   const success = () =>
     toast.success("Registration Succesfull", {
       position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: true,
+      autoClose: 2500,
+      hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
@@ -23,6 +30,9 @@ const Adminreg = () => {
       theme: "dark",
     });
 
+
+
+  /////input style/////
   const js = () => {
     const inputs = document.querySelectorAll(".input");
 
@@ -48,32 +58,27 @@ const Adminreg = () => {
     js();
   }, []);
 
-  const [Val, setVal] = useState({
-    name: "",
-    username: "",
-    password: "",
-  });
-
+  /////get data from inputs/////
   const handleChange = (e) => {
     setVal((pre) => ({ ...pre, [e.target.name]: e.target.value }));
   };
 
+
+  /////add data to db/////
   const handleSubmit = async (e) => {
     e.preventDefault(e);
     const res = await axios.post("http://localhost:3041/college/addadmin", {
       ...Val,
     });
-
     if (res.status == 201) {
       success();
       setTimeout(() => {
         navigate("/");
-      }, 1500);
+      }, 3000);
     } else {
       alert("data not added");
     }
   };
-  
 
   return (
     <div className="admin-login">
@@ -135,8 +140,8 @@ const Adminreg = () => {
             <input type="submit" className="btn" value="Register " />
             <ToastContainer
               position="top-right"
-              autoClose={5000}
-              hideProgressBar={true}
+              autoClose={2500}
+              hideProgressBar={false}
               newestOnTop={false}
               closeOnClick
               rtl={false}
