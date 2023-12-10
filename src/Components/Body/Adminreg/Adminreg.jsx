@@ -129,7 +129,6 @@ const Adminreg = () => {
                 <h5>Password</h5>
                 <input
                   className="input"
-                  minLength="7"
                   onChange={handleChange}
                   type="password"
                   name="password"

@@ -4,8 +4,9 @@ import auth from './auth.js'
 const router=Router();
 router.route("/addadmin").post(controller.addAdmin);
 router.route("/adminlogin").post(controller.adminLogin);
+router.route("/stafflogin").post(controller.staffLogin);
 router.route("/addstaff").post(controller.addStaff);
-router.route("/adminhome").post(auth,controller.adminHome);
+router.route("/fetchUsername").post(auth,controller.fetchUsername);
 
 
 

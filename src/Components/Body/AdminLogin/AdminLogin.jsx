@@ -48,10 +48,10 @@ const AdminLogin = () => {
     try {
       const res = await axios.post(
         "http://localhost:3041/college/adminlogin",Val);
-      let token=res.data.token
+      let admintoken=res.data.admintoken
       if (res.status === 201) {
         alert(res.data.msg);
-        localStorage.setItem("token",JSON.stringify(token))
+        localStorage.setItem("admintoken",JSON.stringify(admintoken))
         navigate("/adminhome");
       }
     } catch (error) {  
@@ -92,7 +92,6 @@ const AdminLogin = () => {
                 <h5>Password</h5>
                 <input
                   className="input"
-                  minLength="7"
                   onChange={handleChange}
                   type="password"
                   name="password"

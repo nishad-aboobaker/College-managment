@@ -9,6 +9,7 @@ import Adminreg from './Components/Body/Adminreg/Adminreg'
 import Adminhome from './Components/Body/Adminhome/Adminhome'
 import Studentreg from './Components/Body/Studentreg/Studentreg'
 import Studentlogin from './Components/Body/Studentlogin/Studentlogin'
+import staffHome from './Components/Body/staffHome/staffHome'
 
 function App() {
   return (
@@ -17,10 +18,11 @@ function App() {
     <BrowserRouter>   
     <Routes>
       
-      <Route path='/admin' Component={index}/>
+      <Route path='/' Component={index}/>
       <Route path='/adminlogin' Component={AdminLogin}/>
       <Route path='/stafflogin' Component={StaffLogin}/>
       <Route path='/staffreg' Component={StaffReg}/>
+      <Route path='/staffHome' Component={staffHome}/>
       <Route path='/adminregister' Component={Adminreg}/>
       <Route path='/adminpannel' Component={Adminpannel}/>
       <Route path='/adminhome' Component={Adminhome}/>
