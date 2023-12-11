@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import wave from "../../../images/wave.png";
-import './staffHome.css'
+import wave from "../../../../images/wave.png";
+import "./staffHome.css";
 
 function staffHome() {
-    const navigate = useNavigate();
-    const [user, setUser] = useState("");
-    const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+  const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(true);
 
-
-
-    useEffect(() => {
+  useEffect(() => {
     const checkLocalStorage = async () => {
       try {
         const stafftoken = JSON.parse(localStorage.getItem("stafftoken"));
@@ -35,23 +33,20 @@ function staffHome() {
       }
     };
     checkLocalStorage();
-}, [navigate]);
+  }, [navigate]);
 
-
-const deleteToken = () => {
+  const deleteToken = () => {
     localStorage.removeItem("stafftoken");
     navigate("/");
   };
 
-  const registerbtn=()=>{
-    navigate('/staffreg')
-  }
-
-
+  const registerbtn = () => {
+    navigate("/staffreg");
+  };
 
   return (
     <div>
-         <div className="adminhome-main">
+      <div className="adminhome-main">
         <img className="wavee" src={wave} alt="bg" />
         <div className="navbarr">
           {loading ? (
@@ -59,7 +54,9 @@ const deleteToken = () => {
           ) : (
             <span className="adminName">{user}</span>
           )}
-          <button onClick={registerbtn} className="registerbtn">Register Student</button>
+          <button onClick={registerbtn} className="registerbtn">
+            Register Student
+          </button>
           <button onClick={deleteToken} className="registerbtn">
             Logout
           </button>
@@ -101,18 +98,11 @@ const deleteToken = () => {
               <p className="job"> Job Title</p>
               <button> Click</button>
             </div>
-            <div className="card">
-              <div className="card-border-top"></div>
-              <div className="img"></div>
-              <span> Person</span>
-              <p className="job"> Job Title</p>
-              <button> Click</button>
-            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default staffHome
+export default staffHome;

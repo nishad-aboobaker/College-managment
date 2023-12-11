@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import wave from "../../../images/wave.png";
+import wave from "../../../../images/wave.png";
 import "./Adminhome.css";
 
 const Adminhome = () => {

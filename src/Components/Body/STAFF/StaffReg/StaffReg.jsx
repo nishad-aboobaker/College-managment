@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './StaffReg.css'
-import wave from "../../../images/wave.png";
+import wave from "../../../../images/wave.png";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 

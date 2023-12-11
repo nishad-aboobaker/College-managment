@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import "./staffLogin.css";
+import "./AdminLogin.css";
 import { Link, useNavigate } from "react-router-dom";
-import wave from "../../../images/wave.png";
-import bg from "../../../images/bg.svg";
-import avatar from "../../../images/avatar.svg";
+import wave from "../../../../images/wave.png";
+import bg from "../../../../images/bg.svg";
+import avatar from "../../../../images/avatar.svg";
 import axios from "axios";
 
-const staffLogin = () => {
+const AdminLogin = () => {
   const navigate=useNavigate()
   const js = () => {
     const inputs = document.querySelectorAll(".input");
@@ -47,13 +47,12 @@ const staffLogin = () => {
     
     try {
       const res = await axios.post(
-        "http://localhost:3041/college/stafflogin",Val);
-      let stafftoken=res.data.stafftoken
-      console.log(stafftoken);
+        "http://localhost:3041/college/adminlogin",Val);
+      let admintoken=res.data.admintoken
       if (res.status === 201) {
         alert(res.data.msg);
-        localStorage.setItem("stafftoken",JSON.stringify(stafftoken))
-        navigate("/staffHome");
+        localStorage.setItem("admintoken",JSON.stringify(admintoken))
+        navigate("/adminhome");
       }
     } catch (error) {  
       alert(error.response.data.msg);
@@ -70,7 +69,7 @@ const staffLogin = () => {
         <div className="login-content">
           <form onSubmit={handleSubmit}>
             <img src={avatar} />
-            <h2 className="title">Welcome Staff</h2>
+            <h2 className="title">Welcome Admin</h2>
             <div className="input-div one">
               <div className="i">
                 <i className="fas fa-user"></i>
@@ -99,6 +98,7 @@ const staffLogin = () => {
                 />
               </div>
             </div>
+            <Link to={"/adminregister"}>Dont have an account ?</Link>
             <input type="submit" className="btn" value="Login" />
           </form>
         </div>
@@ -107,4 +107,4 @@ const staffLogin = () => {
   );
 };
 
-export default staffLogin;
+export default AdminLogin;

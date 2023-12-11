@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Adminreg.css";
 import { Link } from "react-router-dom";
-import wave from "../../../images/wave.png";
-import bg from "../../../images/bg.svg";
-import avatar from "../../../images/avatar.svg";
+import wave from "../../../../images/wave.png";
+import bg from "../../../../images/bg.svg";
+import avatar from "../../../../images/avatar.svg";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
