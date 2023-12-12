@@ -8,42 +8,60 @@ const Adminhome = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState("");
   const [loading, setLoading] = useState(true);
+  const [staff, setStaff] = useState([]);
 
-  useEffect(() => {
-    const checkLocalStorage = async () => {
-      try {
-        const admintoken = JSON.parse(localStorage.getItem("admintoken"));
-        if (!admintoken) {
-          console.error("Token not found in localStorage");
-          return;
-        }
-        const res = await axios.post(
-          "http://localhost:3041/college/fetchUsername",
-          null,
-          {
-            headers: { Authorization: `Bearer ${admintoken}` },
-          }
-        );
-        setUser(res.data.msg);
-      } catch (error) {
-        alert("Session Expired. Please Login Again");
-        navigate("/adminlogin");
-      } finally {
-        setLoading(false);
+  const checkLocalStorage = async () => {
+    try {
+      const admintoken = JSON.parse(localStorage.getItem("admintoken"));
+      if (!admintoken) {
+        console.error("Token not found in localStorage");
+        return;
       }
-    };
-
-    checkLocalStorage();
-  }, [navigate]);
+      const res = await axios.post(
+        "http://localhost:3041/college/fetchUsername",
+        null,
+        {
+          headers: { Authorization: `Bearer ${admintoken}` },
+        }
+      );
+      setUser(res.data.msg);
+    } catch (error) {
+      console.error(error);
+      // Handle the error gracefully, e.g., show a notification to the user
+      navigate("/adminlogin");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const deleteToken = () => {
     localStorage.removeItem("admintoken");
     navigate("/");
   };
 
-  const registerbtn=()=>{
-    navigate('/staffreg')
+  const registerBtn = () => {
+    navigate("/staffreg");
+  };
+
+  const btnclk=(id)=>{
+    navigate(`/staffDetails/${id}`)
   }
+
+  const getStaffDetails = async () => {
+    try {
+      const res = await axios.get("http://localhost:3041/college/getstaff");
+      setStaff(res.data);
+      console.log(res.data);
+    } catch (error) {
+      console.error("Error fetching staff details:", error);
+      // Handle the error gracefully, e.g., show a notification to the user
+    }
+  };
+
+  useEffect(() => {
+    checkLocalStorage();
+    getStaffDetails();
+  }, [navigate]);
 
   return (
     <div>
@@ -55,55 +73,27 @@ const Adminhome = () => {
           ) : (
             <span className="adminName">{user}</span>
           )}
-          <button onClick={registerbtn} className="registerbtn">Register Staff</button>
+          <button onClick={registerBtn} className="registerbtn">
+            Register Staff
+          </button>
           <button onClick={deleteToken} className="registerbtn">
             Logout
           </button>
         </div>
+
         <div className="main-cont">
           <div className="containerr">
-            <div className="card">
-              <div className="card-border-top"></div>
-              <div className="img"></div>
-              <span> Person</span>
-              <p className="job"> Job Title</p>
-              <button> Click</button>
-            </div>
-            <div className="card">
-              <div className="card-border-top"></div>
-              <div className="img"></div>
-              <span> Person</span>
-              <p className="job"> Job Title</p>
-              <button> Click</button>
-            </div>
-            <div className="card">
-              <div className="card-border-top"></div>
-              <div className="img"></div>
-              <span> Person</span>
-              <p className="job"> Job Title</p>
-              <button> Click</button>
-            </div>
-            <div className="card">
-              <div className="card-border-top"></div>
-              <div className="img"></div>
-              <span> Person</span>
-              <p className="job"> Job Title</p>
-              <button> Click</button>
-            </div>
-            <div className="card">
-              <div className="card-border-top"></div>
-              <div className="img"></div>
-              <span> Person</span>
-              <p className="job"> Job Title</p>
-              <button> Click</button>
-            </div>
-            <div className="card">
-              <div className="card-border-top"></div>
-              <div className="img"></div>
-              <span> Person</span>
-              <p className="job"> Job Title</p>
-              <button> Click</button>
-            </div>
+            {staff.map((staffMember,index) => (
+              <div key={index} className="main-card">
+                <div className="card-border-top"></div>
+                <div className="staff-pic">
+                  <img className="stfpic" src={staffMember.photo} alt="" />
+                </div>
+                <span>{staffMember.name}</span>
+                <p className="job">{staffMember.designation}</p>
+                <button className="clkbtn" onClick={()=>{btnclk(staffMember._id)}}>Details</button>
+              </div>
+            ))}
           </div>
         </div>
       </div>

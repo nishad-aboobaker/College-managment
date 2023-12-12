@@ -10,6 +10,7 @@ import Adminhome from './Components/Body/ADMIN/Adminhome/Adminhome'
 import Studentreg from './Components/Body/STUDENTS/Studentreg/Studentreg'
 import Studentlogin from './Components/Body/STUDENTS/Studentlogin/Studentlogin'
 import staffHome from './Components/Body/STAFF/staffHome/staffHome'
+import StaffDetails from './Components/Body/STAFF/StaffDetails/staffDetails'
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
       <Route path='/adminhome' Component={Adminhome}/>
       <Route path='/studentreg' Component={Studentreg}/>
       <Route path='/studentlogin' Component={Studentlogin}/>
+      <Route path='/staffDetails/:id' Component={StaffDetails}/>
+
     </Routes>
     </BrowserRouter>
     </>

@@ -62,7 +62,7 @@
     gap: 50px;
 
 }
-.card {
+.main-card {
     width: 190px;
     height: 254px;
     border: none;
@@ -70,7 +70,7 @@
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
    }
    
-   .card .card-border-top {
+   .main-card .card-border-top {
     width: 60%;
     height: 3%;
     background: #3c6e71;
@@ -78,7 +78,8 @@
     border-radius: 0px 0px 15px 15px;
    }
    
-   .card span {
+   
+   .main-card span {
     font-weight: 600;
     color: black;
     text-align: center;
@@ -89,7 +90,7 @@
     letter-spacing: 4px;
    }
    
-   .card .job {
+   .main-card .job-details {
     font-weight: 400;
     color: black;
     display: block;
@@ -100,16 +101,22 @@
     letter-spacing: 3px;
    }
    
-   .card .img {
+   .main-card .staff-pic {
     width: 90px;
     height: 100px;
     background: #d5f6ea;
     border-radius: 15px;
     margin: auto;
     margin-top: 25px;
+    display: flex;
+    align-items: center;
+   }
+   .stfpic{
+    width: 100%;
+    border-radius: 8px;
    }
    
-   .card button {
+   .main-card .clkbtn {
     padding: 8px 25px;
     display: block;
     margin: auto;
@@ -121,6 +128,6 @@
     font-weight: 600;
    }
    
-   .card button:hover {
+   .main-card .clkbtn:hover {
     background: #3c6e71;
    }

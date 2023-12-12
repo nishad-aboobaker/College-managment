@@ -88,3 +88,15 @@ export async function staffLogin(req, res) {
     res.status(500).send({ msg: "Internal Server Error" });
   }
 }
+
+
+export async function getstaffs(req,res){
+  let task=await staff_schema.find()
+  res.status(200).send(task)
+}
+
+export async function getstaffDetails(req,res){
+  const{id}=req.params;
+  let task=await staff_schema.findOne({_id:id})
+  res.status(200).send(task)
+}

@@ -9,7 +9,8 @@ const staff_schema=new mongoose.Schema({
     password:{type:String},
     phone:{type:Number},
     designation:{type:String},
-    address:{type:String}
+    address:{type:String},
+    photo:{type:String}
 })
 
 export default mongoose.model.staffs||mongoose.model("staff",staff_schema)

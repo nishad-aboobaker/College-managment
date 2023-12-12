@@ -7,6 +7,8 @@ router.route("/adminlogin").post(controller.adminLogin);
 router.route("/stafflogin").post(controller.staffLogin);
 router.route("/addstaff").post(controller.addStaff);
 router.route("/fetchUsername").post(auth,controller.fetchUsername);
+router.route("/getStaff").get(controller.getstaffs);
+router.route("/getStaffDetails/:id").get(controller.getstaffDetails);
 
 
 

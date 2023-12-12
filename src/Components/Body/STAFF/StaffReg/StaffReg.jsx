@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const StaffReg = () => {
   const navigate=useNavigate()
-  
+  let Photo=""
   const [Val, setVal] = useState({
     name: "",
     username: "",
@@ -21,6 +21,24 @@ const StaffReg = () => {
     address: ""
   });
 
+  const uploadphoto=async(e)=>{
+    Photo=await convertToBase64(e.target.files[0]);
+  }
+
+  function convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(file);
+  
+        fileReader.onload = () => {
+            resolve(fileReader.result)
+        }
+        fileReader.onerror = (error) => {
+            reject(error)
+        }
+      })
+  }
+
   const handleChange = (e) => {
     setVal((pre) => ({ ...pre, [e.target.name]: e.target.value }));
   };
@@ -28,7 +46,7 @@ const StaffReg = () => {
   const handleSubmit = async (e) => {
     e.preventDefault(e);
     const res = await axios.post("http://localhost:3041/college/addstaff", {
-      ...Val,
+      ...Val,photo:Photo
     });
     if (res.status == 201) {
       alert("Registration Successfull")
@@ -61,8 +79,8 @@ const StaffReg = () => {
                 <input type="text" onChange={handleChange} name='address' placeholder='Address'/>
       </div>
     </div>
-    <div className="staff-file">
-      <input type="file" name='photo' placeholder='Photo' />
+    <div className="staff-filee">
+      <input type="file" name='photo' onChange={uploadphoto} placeholder='Photo' />
     </div>
     <div className="admin-staff-reg-btn">
       <button onClick={handleSubmit}>Register</button>
