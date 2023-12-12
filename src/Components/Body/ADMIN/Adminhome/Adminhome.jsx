@@ -27,7 +27,6 @@ const Adminhome = () => {
       setUser(res.data.msg);
     } catch (error) {
       console.error(error);
-      // Handle the error gracefully, e.g., show a notification to the user
       navigate("/adminlogin");
     } finally {
       setLoading(false);
@@ -54,7 +53,6 @@ const Adminhome = () => {
       console.log(res.data);
     } catch (error) {
       console.error("Error fetching staff details:", error);
-      // Handle the error gracefully, e.g., show a notification to the user
     }
   };
 

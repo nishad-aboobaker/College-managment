@@ -1,5 +1,6 @@
 import admin_schema from "./admin.model.js";
 import staff_schema from "./staff.model.js";
+import students_schema from "./students.model.js"
 import bcrypt from "bcrypt";
 import pkg from "jsonwebtoken";
 const { sign } = pkg;
@@ -100,3 +101,19 @@ export async function getstaffDetails(req,res){
   let task=await staff_schema.findOne({_id:id})
   res.status(200).send(task)
 }
+
+export async function addStudent(req, res) {
+  try {
+    const { ...StudentsDetails } = req.body;
+    const newStaff = await students_schema.create({ ...StudentsDetails});
+    res.status(201).json(newStaff);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+}
+
+export async function getstudents(req,res){
+  let task=await students_schema.find()
+  res.status(200).send(task)
+} 
