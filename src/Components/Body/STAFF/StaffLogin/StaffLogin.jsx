@@ -99,6 +99,10 @@ const staffLogin = () => {
                 />
               </div>
             </div>
+            <div className="linkss">
+            <Link to={"/staffForgotUsername"}>Forgot Username ?</Link>
+            <Link to={"/staffForgotPassword"}>Forgot Password ?</Link>
+            </div>
             <input type="submit" className="btn" value="Login" />
           </form>
         </div>

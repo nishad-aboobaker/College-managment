@@ -6,7 +6,7 @@ import "./StaffDetails.css";
 const StaffDetails = () => {
   let { id } = useParams();
 
-  const [staffDetails, setStaffDetails] = useState(null); // Use null instead of an empty array
+  const [staffDetails, setStaffDetails] = useState(null);
 
   const fetchData = async () => {
     try {
@@ -40,7 +40,6 @@ const StaffDetails = () => {
             />
           </div>
           <div id="details">
-            <h2>Staff Details</h2>
             <table>
               <tbody>
                 <tr>
@@ -77,6 +76,12 @@ const StaffDetails = () => {
                 </tr>
               </tbody>
             </table>
+        <div className="box">
+        <div className="button-container">
+              <button className="btnss">Delete</button>
+              <button className="btnss">Update</button>
+        </div>
+        </div>
           </div>
         </div>
       </div>

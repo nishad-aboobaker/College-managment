@@ -27,7 +27,7 @@
 }
 
 #photo {
-    width: 350px;
+    width: 340px;
     height: 350px;
     object-fit: cover;
     border-radius: 8px;
@@ -37,6 +37,23 @@
     flex-grow: 1;
     text-align: left;
 }
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnss{
+    padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+
 
 table {
     width: 100%;

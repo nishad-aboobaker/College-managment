@@ -175,6 +175,10 @@ a:hover{
 .btn:hover{
 	background-position: right;
 }
+.linkss{
+	display: flex;
+	justify-content: space-between;
+}
 
 
 @media screen and (max-width: 1050px){

@@ -41,8 +41,8 @@ function staffHome() {
     navigate("/");
   };
 
-  const registerbtn = () => {
-    navigate("/studentreg");
+  const registerbtn = (user) => {
+    navigate(`/studentreg/${user}`);
   };
 
   const getStudentsDetails = async () => {
@@ -55,6 +55,10 @@ function staffHome() {
     }
   };
 
+  const detailsbtn=(id)=>{
+    navigate(`/StudentsDetails/${id}`)
+  }
+
   return (
     <div>
       <div className="adminhome-main">
@@ -65,7 +69,7 @@ function staffHome() {
           ) : (
             <span className="adminName">{user}</span>
           )}
-          <button onClick={registerbtn} className="registerbtn">
+          <button onClick={()=>{registerbtn(user)}} className="registerbtn">
             Register Student
           </button>
           <button onClick={deleteToken} className="registerbtn">
@@ -83,7 +87,7 @@ function staffHome() {
               </div>
               <span>{dt.name}</span>
               <p className="job">{dt.course}</p>
-              <button className="clkbtn"> Details</button>
+              <button onClick={()=>{detailsbtn(dt._id)}} className="clkbtn"> Details</button>
             </div>
             ))}
           </div>

@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import wave from "../../../../images/wave.png";
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './Studentreg.css'
 import { Link } from 'react-router-dom'
 const Studentreg = () => {
 
   const navigate=useNavigate()
+  const {user}=useParams()
 
   let Photo=""
   const[Val,SetVal]=useState({
@@ -46,7 +47,7 @@ const Studentreg = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault(e);
     const res = await axios.post("http://localhost:3041/college/addStudent", {
-      ...Val,photo:Photo
+      ...Val,photo:Photo,tutor:user
     });
     if (res.status == 201) {
       alert("Registration Successfull")

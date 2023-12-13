@@ -11,6 +11,9 @@ import Studentreg from './Components/Body/STUDENTS/Studentreg/Studentreg'
 import Studentlogin from './Components/Body/STUDENTS/Studentlogin/Studentlogin'
 import staffHome from './Components/Body/STAFF/staffHome/staffHome'
 import StaffDetails from './Components/Body/STAFF/StaffDetails/staffDetails'
+import StudentsDetails from './Components/Body/STUDENTS/StudentDetails/StudentsDetails'
+import staffForgotPassword from './Components/Body/STAFF/staffForgotPassword/staffForgotPassword'
+import staffForgotUsername from './Components/Body/STAFF/staffForgotUsername/staffForgotUsername'
 
 function App() {
   return (
@@ -27,9 +30,12 @@ function App() {
       <Route path='/adminregister' Component={Adminreg}/>
       <Route path='/adminpannel' Component={Adminpannel}/>
       <Route path='/adminhome' Component={Adminhome}/>
-      <Route path='/studentreg' Component={Studentreg}/>
+      <Route path='/studentreg/:user' Component={Studentreg}/>
       <Route path='/studentlogin' Component={Studentlogin}/>
       <Route path='/staffDetails/:id' Component={StaffDetails}/>
+      <Route path='/StudentsDetails/:id' Component={StudentsDetails}/>
+      <Route path='/staffForgotPassword' Component={staffForgotPassword}/>
+      <Route path='/staffForgotUsername' Component={staffForgotUsername}/>
 
     </Routes>
     </BrowserRouter>

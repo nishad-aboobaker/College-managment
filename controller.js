@@ -117,3 +117,28 @@ export async function getstudents(req,res){
   let task=await students_schema.find()
   res.status(200).send(task)
 } 
+
+export async function getStudentsDetails(req,res){
+  const{id}=req.params;
+  let task=await students_schema.findOne({_id:id})
+  res.status(200).send(task)
+}
+
+
+export async function staffVerifyDetails(req,res){
+  const{phone}=req.params;
+  if(phone==null){
+    res.status(404).send({msg:"phone number not found"})
+  }
+  let data=await staff_schema.findOne({phone:phone})
+  res.status(200).send(data)
+}
+
+
+export async function staffResetPassword(req, res) {
+  const { phone } = req.params;
+  const password = req.body;
+  const hashedPwd = await bcrypt.hash(password.password, 10);
+  await staff_schema.updateOne({ phone:phone }, { $set:{password:hashedPwd} });
+  res.status(201).send("updated");
+}
