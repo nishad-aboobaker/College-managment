@@ -125,13 +125,21 @@ export async function getStudentsDetails(req,res){
 }
 
 
-export async function staffVerifyDetails(req,res){
-  const{phone}=req.params;
-  if(phone==null){
-    res.status(404).send({msg:"phone number not found"})
+export async function staffVerifyDetails(req, res) {
+  try {
+    const { phone } = req.params;
+    if (!phone) {
+      return res.status(404).send({ msg: "Phone number not found" });
+    }
+    const data = await staff_schema.findOne({ phone: phone });
+    if (!data) {
+      return res.status(404).send({ msg: "Data not found for the provided phone number" });
+    }
+    res.status(200).send(data);
+  } catch (error) {
+    console.error("Error in staffVerifyDetails:", error);
+    res.status(500).send({ msg: "Internal Server Error" });
   }
-  let data=await staff_schema.findOne({phone:phone})
-  res.status(200).send(data)
 }
 
 

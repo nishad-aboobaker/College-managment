@@ -66,6 +66,7 @@ const Adminhome = () => {
       <div className="adminhome-main">
         <img className="wavee" src={wave} alt="bg" />
         <div className="navbarr">
+        <h1 className="staffs">REGISTERED STAFFS</h1>
           {loading ? (
             <span className="adminName">Loading...</span>
           ) : (

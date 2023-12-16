@@ -3,10 +3,10 @@ import './staffForgotUsername.css';
 import axios from 'axios';
 
 function staffForgotUsername() {
-  const [phone, setPhone] = useState(""); // Change to number type
+  const [phone, setPhone] = useState("");
 
   const handleChange = (e) => {
-    setPhone(e.target.value); // Set the phone directly without spread
+    setPhone(e.target.value);
   };
 
   const handleSubmit = async (e) => {
@@ -18,6 +18,7 @@ function staffForgotUsername() {
       alert(`Your Username is ${res.data.username}`);
     } catch (error) {
       console.log(error);
+      alert(error.response.data.msg);
     }
   };
 
@@ -30,12 +31,12 @@ function staffForgotUsername() {
           <div className="form-group">
             <label>Phone</label>
             <input
-              type="number" // Change to number type
+              type="number"
               id="phone"
               onChange={handleChange}
               name="phone"
               placeholder="Enter your phone"
-              required // Remove the redundant attribute
+              required
             />
           </div>
           <button className="form-submit-btn" onClick={handleSubmit} type="submit">

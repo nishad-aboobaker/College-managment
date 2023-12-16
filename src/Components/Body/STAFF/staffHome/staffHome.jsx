@@ -64,6 +64,7 @@ function staffHome() {
       <div className="adminhome-main">
         <img className="wavee" src={wave} alt="bg" />
         <div className="navbarr">
+        <h1 className="staffs">REGISTERED STUDENTS</h1>
           {loading ? (
             <span className="adminName">Loading...</span>
           ) : (

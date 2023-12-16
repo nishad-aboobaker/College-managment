@@ -17,29 +17,35 @@ function staffForgotPassword() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     try {
+      // Assuming Val.phone, Val.email, and Val.password hold the phone number, email, and new password respectively
       const res = await axios.get(
         `http://localhost:3041/college/staffVerifyDetails/${Val.phone}`
       );
       if (res.data.email === Val.email) {
-        const newPassword = { password: Val.password }; // assuming Val.password holds the new password
-  
+        const newPassword = { password: Val.password };
         const patchRes = await axios.patch(
           `http://localhost:3041/college/staffResetPassword/${Val.phone}`,
           newPassword
         );
-  
         if (patchRes.status === 201) {
-          alert(patchRes.data);
-          navigate('/stafflogin')
+          alert(patchRes.data); // Assuming the response contains a message
+          navigate('/stafflogin');
+        } else {
+          console.log("Password reset failed");
+          alert("Password reset failed")
         }
       } else {
-        console.log("failed");
+        console.log("Email verification failed");
+        alert("Email verification failed")
       }
     } catch (error) {
-      // console.log(patchRes);
+      console.error("Error in handleSubmit:", error);
+      // Handle errors, show appropriate messages, or navigate as needed
     }
   };
+  
 
   return (
     <>
