@@ -14,6 +14,7 @@ import StaffDetails from './Components/Body/STAFF/StaffDetails/staffDetails'
 import StudentsDetails from './Components/Body/STUDENTS/StudentDetails/StudentsDetails'
 import staffForgotPassword from './Components/Body/STAFF/staffForgotPassword/staffForgotPassword'
 import staffForgotUsername from './Components/Body/STAFF/staffForgotUsername/staffForgotUsername'
+import staffUpdate from './Components/Body/STAFF/staffUpdate/staffUpdate'
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
       <Route path='/StudentsDetails/:id' Component={StudentsDetails}/>
       <Route path='/staffForgotPassword' Component={staffForgotPassword}/>
       <Route path='/staffForgotUsername' Component={staffForgotUsername}/>
+      <Route path='/staffUpdate/:id' Component={staffUpdate}/>
 
     </Routes>
     </BrowserRouter>

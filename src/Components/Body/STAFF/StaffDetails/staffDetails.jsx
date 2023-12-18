@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./StaffDetails.css";
 
 const StaffDetails = () => {
   let { id } = useParams();
+  const navigate=useNavigate()
 
   const [staffDetails, setStaffDetails] = useState(null);
 
@@ -27,6 +28,35 @@ const StaffDetails = () => {
   if (!staffDetails) {
     return <p>Loading...</p>;
   }
+
+  const dltstaff = async (id) => {
+    try {
+      const confirmed = window.confirm("Are you sure you want to delete this staff member?");
+  
+      if (!confirmed) {
+        return;
+      }
+      const res = await axios.delete(
+        `http://localhost:3041/college/deleteStaff/${id}`
+      );
+      if (res.status === 200) {
+        alert("Staff deleted successfully");
+      } else {
+        console.log("Deletion was not successful");
+      }
+  
+      navigate('/adminHome');
+    } catch (error) {
+      console.error("An error occurred while deleting staff:", error.message);
+    }
+  };
+
+
+  const staffUpdate=(id)=>{
+    navigate(`/staffUpdate/${id}`)
+  }
+  
+  
 
   return (
     <>
@@ -78,8 +108,8 @@ const StaffDetails = () => {
             </table>
         <div className="box">
         <div className="button-container">
-              <button className="btnss">Delete</button>
-              <button className="btnss">Update</button>
+              <button onClick={()=>{dltstaff(staffDetails._id)}} className="btnss">Delete</button>
+              <button onClick={()=>{staffUpdate(staffDetails._id)}} className="btnss">Update</button>
         </div>
         </div>
           </div>

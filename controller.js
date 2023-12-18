@@ -150,3 +150,46 @@ export async function staffResetPassword(req, res) {
   await staff_schema.updateOne({ phone:phone }, { $set:{password:hashedPwd} });
   res.status(201).send("updated");
 }
+
+export function deleteStaff(req, res) {
+  const { id } = req.params;
+  const data = staff_schema.deleteOne({ _id: id });
+  data
+    .then((resp) => {
+      res.status(200).send(resp);
+    })
+    .catch((error) => {
+      res.status(404).send(error);
+    });
+}
+
+export function deletestudent(req, res) {
+  const { id } = req.params;
+  const data = students_schema.deleteOne({ _id: id });
+  data
+    .then((resp) => {
+      res.status(200).send(resp);
+    })
+    .catch((error) => {
+      res.status(404).send(error);
+    });
+}
+
+
+export async function updateStaff(req, res) {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const { ...details } = req.body;
+    try {
+      const updatedStaff = await staff_schema.updateOne({ _id: id }, { $set: { ...details } });
+      res.status(201).json({ message: 'Staff member updated successfully' });
+    } catch (updateError) {
+      console.error('Error updating staff member:', updateError.message);
+      res.status(500).json({ error: 'Internal server error during update' });
+    }
+  } catch (error) {
+    console.error('An error occurred in updateStaff:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}

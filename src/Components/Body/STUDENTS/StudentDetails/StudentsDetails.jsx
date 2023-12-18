@@ -1,11 +1,12 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 
 function StudentsDetails() {
     const {id}=useParams()
     const [studentsDetails, setStudentsDetails] = useState([]);
+    const navigate=useNavigate()
 
     const fetchData = async () => {
         try {
@@ -22,13 +23,32 @@ function StudentsDetails() {
       useEffect(() => {
         fetchData();
       }, [id]);
+
+
+      const deletestudent=async(id)=>{
+        try {
+          const confirmed = window.confirm("Are you sure you want to delete this student?");
+      
+          if (!confirmed) {
+            return;
+          }
+          const res = await axios.delete(
+            `http://localhost:3041/college/deletestudent/${id}`
+          );
+          if (res.status === 200) {
+            alert("Student deleted successfully");
+          } else {
+            console.log("Deletion was not successful");
+          }
+          navigate('/staffHome');
+        } catch (error) {
+          console.error("An error occurred while deleting staff:", error.message);
+        }
+      }
     
   return (
     <div>
-      {/* <h1>{id}</h1> */}
-
-
-       
+      
       <div className="parent">
         <div id="staff-details">
           <div id="photo-container">
@@ -81,7 +101,7 @@ function StudentsDetails() {
             </table>
         <div className="box">
         <div className="button-container">
-              <button className="btnss">Delete</button>
+              <button onClick={()=>{deletestudent(studentsDetails._id)}} className="btnss">Delete</button>
               <button className="btnss">Update</button>
         </div>
         </div>

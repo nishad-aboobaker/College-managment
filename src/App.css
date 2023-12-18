@@ -1,0 +1,10 @@
+.pic-cont{
+    width: 20%;
+    height: 35vh;
+    border: 1px solid black;
+}
+
+.pic-cont img{
+    width: 100%;
+    height: 100%;
+}
