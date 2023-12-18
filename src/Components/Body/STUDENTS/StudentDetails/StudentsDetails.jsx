@@ -45,6 +45,10 @@ function StudentsDetails() {
           console.error("An error occurred while deleting staff:", error.message);
         }
       }
+
+      const updateStudent=(id)=>{
+        navigate(`/studentUpdate/${id}`)
+      }
     
   return (
     <div>
@@ -102,7 +106,7 @@ function StudentsDetails() {
         <div className="box">
         <div className="button-container">
               <button onClick={()=>{deletestudent(studentsDetails._id)}} className="btnss">Delete</button>
-              <button className="btnss">Update</button>
+              <button onClick={()=>{updateStudent(studentsDetails._id)}} className="btnss">Update</button>
         </div>
         </div>
           </div>

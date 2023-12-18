@@ -193,3 +193,22 @@ export async function updateStaff(req, res) {
     res.status(500).json({ error: 'Internal server error' });
   }
 }
+
+export async function updateStudent(req, res) {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const { ...details } = req.body;
+    try {
+      const updatedStaff = await students_schema.updateOne({ _id: id }, { $set: { ...details } });
+      res.status(201).json({ message: 'Student updated successfully' });
+    } catch (updateError) {
+      console.error('Error updating Student:', updateError.message);
+      res.status(500).json({ error: 'Internal server error during update' });
+    }
+  } catch (error) {
+    console.error('An error occurred in updateStaff:', error.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+}
+

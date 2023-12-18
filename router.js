@@ -12,7 +12,8 @@ router.route("/adminlogin").post(controller.adminLogin);
 router.route("/addstaff").post(controller.addStaff);
 router.route("/getStaff").get(controller.getstaffs);
 router.route("/getStaffDetails/:id").get(controller.getstaffDetails);
-router.route("/deletestudent/:id").delete(controller.deletestudent);
+router.route("/updateStaff/:id").patch(controller.updateStaff);
+router.route("/deleteStaff/:id").delete(controller.deleteStaff);
 
 /////stafff/////
 router.route("/addStudent").post(controller.addStudent);
@@ -21,8 +22,8 @@ router.route("/getstudents").get(controller.getstudents);
 router.route("/getStudentsDetails/:id").get(controller.getStudentsDetails);
 router.route("/staffVerifyDetails/:phone").get(controller.staffVerifyDetails);
 router.route("/staffResetPassword/:phone").patch(controller.staffResetPassword);
-router.route("/deleteStaff/:id").delete(controller.deleteStaff);
-router.route("/updateStaff/:id").patch(controller.updateStaff);
+router.route("/deletestudent/:id").delete(controller.deletestudent);
+router.route("/updateStudent/:id").patch(controller.updateStudent);
 
 
 
