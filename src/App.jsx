@@ -17,6 +17,7 @@ import staffForgotUsername from './Components/Body/STAFF/staffForgotUsername/sta
 import staffUpdate from './Components/Body/STAFF/staffUpdate/staffUpdate'
 import studentUpdate from './Components/Body/STUDENTS/studentUpdate/studentUpdate'
 import UploadMark from './Components/Body/STUDENTS/uploadMark/UploadMark'
+import studentHome from './Components/Body/STUDENTS/studentHome/studentHome'
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
       <Route path='/staffUpdate/:id' Component={staffUpdate}/>
       <Route path='/studentUpdate/:id' Component={studentUpdate}/>
       <Route path='/uploadMark/:id' Component={UploadMark}/>
+      <Route path='/studentHome/:id' Component={studentHome}/>
 
     </Routes>
     </BrowserRouter>

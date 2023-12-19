@@ -224,3 +224,38 @@ export async function uploadMark(req, res) {
   }
 }
 
+export async function getStudent(req, res) {
+  const { phone } = req.params;
+  let task = await students_schema.findOne({ phone: phone });
+  res.status(200).send(task);
+}
+
+export async function getMarks(req, res) {
+  try {
+    const { id } = req.params;
+    let task = await marks_schema.findOne({ StudentId: id });
+    if (!task) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+    res.status(200).json(task);
+  } catch (error) {
+    console.error("Error fetching marks:", error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+export async function getBasicDetails(req, res) {
+  try {
+    const { id } = req.params;
+    let task = await students_schema.findOne({ _id: id });
+    if (!task) {
+      return res.status(404).json({ error: 'Student not found' });
+    }
+    res.status(200).json(task);
+  } catch (error) {
+    console.error("Error fetching marks:", error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+

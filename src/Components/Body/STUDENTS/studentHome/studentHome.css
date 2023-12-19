@@ -1,0 +1,130 @@
+/* studentHome.css */
+
+.main-div {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f2f2f2;
+  color: #333;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 80vw;
+}
+
+header {
+  background: #3498db;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+section {
+  margin: 20px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.avtr {
+  max-width: 150px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: #3498db;
+}
+
+p {
+  color: #555;
+}
+
+/* Details Section */
+.details-section {
+  margin-top: 20px;
+}
+
+.details-section h3 {
+  color: #3498db;
+}
+
+.details-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.details-section th, .details-section td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.details-section th {
+  background: #3498db;
+  color: #fff;
+}
+
+.details-section p {
+  margin: 10px 0;
+}
+
+/* Marks Section */
+.marks-section {
+  margin-top: 20px;
+}
+
+.marks-section h3 {
+  color: #3498db;
+}
+
+.marks-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.marks-section th, .marks-section td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.marks-section th {
+  background: #3498db;
+  color: #fff;
+}
+
+/* Attendance Section */
+.attendance-section {
+  margin-top: 20px;
+}
+
+.attendance-section h3 {
+  color: #3498db;
+}
+
+.attendance-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-section th, .attendance-section td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.attendance-section th {
+  background: #3498db;
+  color: #fff;
+}

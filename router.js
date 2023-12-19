@@ -27,6 +27,11 @@ router.route("/updateStudent/:id").patch(controller.updateStudent);
 router.route("/updateStudent/:id").patch(controller.updateStudent);
 router.route("/uploadMark").post(controller.uploadMark);
 
+/////student/////
+router.route("/getStudent/:phone").get(controller.getStudent);
+router.route("/getMarks/:id").get(controller.getMarks);
+router.route("/getBasicDetails/:id").get(controller.getBasicDetails);
+
 
 
 export default router;
