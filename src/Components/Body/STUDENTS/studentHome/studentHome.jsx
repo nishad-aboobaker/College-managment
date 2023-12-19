@@ -54,7 +54,7 @@ function StudentHome() {
     <div>
       <div className="main-div">
         <section>
-          <img className="avtr" src={detailsData.photo} alt="Student Photo" />
+          <img className="avtr" src={detailsData?.photo} alt="Student Photo" />
           <h2>{detailsData.name}</h2>
 
           <div className="details-section">

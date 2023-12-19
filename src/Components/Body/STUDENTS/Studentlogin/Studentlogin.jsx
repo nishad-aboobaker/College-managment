@@ -33,6 +33,7 @@ const Studentlogin = () => {
 
   return (
     <div>
+      <div className="first">
       <div className="studentlogin-main">
         <div className="studentlogin-card">
           <div className="student-login-card-heading">
@@ -55,9 +56,10 @@ const Studentlogin = () => {
                 placeholder="Date of Birth"
               />
             </div>
-            <button onClick={handleSubmit}>Login</button>
+            <button className="LOGINBTN" onClick={handleSubmit}>Login</button>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
