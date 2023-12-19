@@ -16,6 +16,7 @@ import staffForgotPassword from './Components/Body/STAFF/staffForgotPassword/sta
 import staffForgotUsername from './Components/Body/STAFF/staffForgotUsername/staffForgotUsername'
 import staffUpdate from './Components/Body/STAFF/staffUpdate/staffUpdate'
 import studentUpdate from './Components/Body/STUDENTS/studentUpdate/studentUpdate'
+import UploadMark from './Components/Body/STUDENTS/uploadMark/UploadMark'
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       <Route path='/staffForgotUsername' Component={staffForgotUsername}/>
       <Route path='/staffUpdate/:id' Component={staffUpdate}/>
       <Route path='/studentUpdate/:id' Component={studentUpdate}/>
+      <Route path='/uploadMark/:id' Component={UploadMark}/>
 
     </Routes>
     </BrowserRouter>

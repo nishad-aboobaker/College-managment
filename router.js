@@ -24,6 +24,8 @@ router.route("/staffVerifyDetails/:phone").get(controller.staffVerifyDetails);
 router.route("/staffResetPassword/:phone").patch(controller.staffResetPassword);
 router.route("/deletestudent/:id").delete(controller.deletestudent);
 router.route("/updateStudent/:id").patch(controller.updateStudent);
+router.route("/updateStudent/:id").patch(controller.updateStudent);
+router.route("/uploadMark").post(controller.uploadMark);
 
 
 

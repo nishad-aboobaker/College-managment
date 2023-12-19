@@ -1,6 +1,7 @@
 import admin_schema from "./admin.model.js";
 import staff_schema from "./staff.model.js";
 import students_schema from "./students.model.js"
+import marks_schema from "./marks.model.js"
 import bcrypt from "bcrypt";
 import pkg from "jsonwebtoken";
 const { sign } = pkg;
@@ -209,6 +210,17 @@ export async function updateStudent(req, res) {
   } catch (error) {
     console.error('An error occurred in updateStaff:', error.message);
     res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
+export async function uploadMark(req, res) {
+  try {
+    const {...mark} = req.body;
+    const result = await marks_schema.create({...mark});
+    res.status(201).json(result);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
   }
 }
 

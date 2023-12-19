@@ -49,6 +49,10 @@ function StudentsDetails() {
       const updateStudent=(id)=>{
         navigate(`/studentUpdate/${id}`)
       }
+
+      const uploadMark=(id)=>{
+        navigate(`/uploadMark/${id}`)
+      }
     
   return (
     <div>
@@ -107,6 +111,7 @@ function StudentsDetails() {
         <div className="button-container">
               <button onClick={()=>{deletestudent(studentsDetails._id)}} className="btnss">Delete</button>
               <button onClick={()=>{updateStudent(studentsDetails._id)}} className="btnss">Update</button>
+              <button onClick={()=>{uploadMark(studentsDetails._id)}} className="btnss">Upload Mark</button>
         </div>
         </div>
           </div>
